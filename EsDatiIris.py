@@ -69,3 +69,18 @@ print(raggruppamento_specie)
 # distribuzioni per specie
 sns.pairplot(df_iris, hue = 'specie', diag_kind = 'kde')
 plt.show()
+
+print("Il grafico seguente mostra la disrtibuzione delle caratteristiche del dataset per ogni specie. Aiuta a individuare la variabilità, la presenza di outlier e le differenze tra le specie.")
+plt.figure(figsize = (12, 6))
+sns.boxplot(x = 'specie', y = 'sepal length (cm)', data = df_iris)
+plt.title("Boxplot della lunghezza del sepalo per specie")
+plt.xlabel("Specie")
+plt.ylabel("Lunghezza del sepalo (cm)")
+plt.show()
+
+
+print("Il grafico a torta seguente mostra la distribuzione delle specie nel dataset, fornendo una rappresentazione visiva della loro proporzione relativa.")
+plt.figure(figsize = (8, 8))
+plt.pie(conteggio_specie, labels = conteggio_specie.index, autopct = '%1.1f%%', colors = sns.color_palette('pastel'))
+plt.title("Distribuzione percentuale delle specie nel dataset Iris")
+plt.show()
