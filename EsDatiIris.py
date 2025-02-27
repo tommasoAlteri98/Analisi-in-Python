@@ -39,3 +39,33 @@ print(minimo_specie)
 massimo_specie = df_iris.groupby('specie').max()
 print("\nValore massimo per specie:")
 print(massimo_specie)
+
+# Conteggio delle specie
+conteggio_specie = df_iris['specie'].value_counts()
+print("\nConteggio delle specie:")
+print(conteggio_specie)
+
+# conteggio specie
+sns.countplot(x = 'specie', data = df_iris)
+plt.title("Distribuzione delle specie nel dataset Iris")
+plt.xlabel("Specie")
+plt.ylabel("Conteggio")
+plt.show()
+
+# correlazioni
+matrice_correlazione = df_iris.iloc[:, :-1].corr()
+print("\nMatrice di correlazione:")
+print(matrice_correlazione)
+
+sns.heatmap(matrice_correlazione, annot = True, cmap = 'coolwarm')
+plt.title("Matrice di correlazione delle caratteristiche")
+plt.show()
+
+# Raggruppamenti per specie
+raggruppamento_specie = df_iris.groupby('specie').agg(['mean', 'max'])
+print("\nStatistiche per specie (media e massimo):")
+print(raggruppamento_specie)
+
+# distribuzioni per specie
+sns.pairplot(df_iris, hue = 'specie', diag_kind = 'kde')
+plt.show()
